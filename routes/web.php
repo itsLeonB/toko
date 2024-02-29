@@ -17,12 +17,29 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
+
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/products', function () {
+        return view('products');
+    })->name('products');
+
+    Route::get('/stocks', function () {
+        return view('stocks');
+    })->name('stocks');
+
+    Route::get('/accounts', function () {
+        return view('accounts');
+    })->name('accounts');
+
+    Route::get('/purchases', function () {
+        return view('purchases');
+    })->name('purchases');
+
+    Route::get('/sales', function () {
+        return view('sales');
+    })->name('sales');
 });
