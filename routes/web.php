@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,13 +24,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/products', function () {
-        return view('products');
-    })->name('products');
-
-    Route::get('/stocks', function () {
-        return view('stocks');
-    })->name('stocks');
+    Route::get('/inventory', function () {
+        return view('inventory');
+    })->name('inventory');
 
     Route::get('/accounts', function () {
         return view('accounts');
@@ -42,4 +39,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::get('/sales', function () {
         return view('sales');
     })->name('sales');
+
+    Route::resources([
+        'products' => ProductController::class,
+    ]);
 });
